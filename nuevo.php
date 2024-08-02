@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
     <header>
         <nav class= "navbar">
             <div class="navbar-izq"> 
-                <a href="index.php">Inicio</a>
+                <a href="index.php">Inicio</a>    
                 <a href="nuevo.php">Nuevo Artículo</a>
                 <a href="lista.php">Lista de Productos</a>
                 <a href="costos.php">Costos</a>
@@ -107,34 +107,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
         <button type="submit" name="add_product">Agregar Producto</button>
     </form>
 
-    <!-- Mostrar la tabla de productos -->
-    <h2>Lista de Productos</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre del Producto</th>
-                <th>Categoría</th>
-                <th>Precio de Compra</th>
-                <th>Precio Final</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($productos as $producto): ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($producto['nombre']); ?></td>
-                    <td><?php echo htmlspecialchars($producto['categoria_nombre']); ?></td>
-                    <td><?php echo '$' . number_format($producto['precio_compra'], 2); ?></td>
-                    <td><?php echo '$' . number_format($producto['precio_final'], 2); ?></td>
-                    <td>
-                        <a href="editar.php?id=<?php echo urlencode($producto['id_producto']); ?>">✏️</a>
-                        <a href="eliminar.php?id=<?php echo urlencode($producto['id_producto']); ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?')">❌</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-
-    
-</body>
-</html>
